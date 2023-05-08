@@ -1,2 +1,2 @@
 # MoviezzApp
-Movies web app using  TMDB API
+"Moviezz App" is the web app, wherein users can watch the movies, search, add to watchlist, add to favorites, subscribe to premium plans, get recommended movies. To display the movie content, APi used is TMDB Api, here all the movies are present along with movie posters and movie link to play the movie. Moviezz is fully functional, responsive having well organized flow. Technologies I used here are: frontend: html, css, javascript, bootstrap, angular backend: java, springboot, microservices, apigateway, Eureka Server, Docker, jwtToken, Feign Client , MySQL, MongoDB, RabbitMQ
