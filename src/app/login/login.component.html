@@ -1,0 +1,51 @@
+<video autoplay muted loop id="myVideo" style="object-fit: fill;">
+  <source src="../../assets/images/pexels-cottonbro-studio-5157555-4096x2160-25fps.mp4" type="video/mp4">
+</video>
+
+<div style="position: fixed;width: 100%;">
+  <mat-toolbar style=" background-image: linear-gradient(15deg,#1BFFFF  , #2E3192  100%);">
+    <img routerLink="" src="../../assets/95d3fd30194144abaa5253cfa90d8c77-fotor-bg-remover-2023042623633.png" id="movie-icon">
+    <span style="margin-left: 75vw;"></span>
+    <a id="signUpBtn" routerLink="/register">
+      <h2>Sign Up</h2>
+    </a>
+  </mat-toolbar>
+</div>
+
+<div class="wrapper">
+  <div class="loginArea">
+    <h1 style="color: black; margin-top: -20%;margin-bottom: 35px;">Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="sendLoginData()">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="text" class="form-control" name="emailId" formControlName="emailId" placeholder="email*">
+        <div *ngIf="emailId?.invalid && emailId?.dirty || emailId?.touched" id="error-msg">
+          <div *ngIf="emailId?.errors?.['required']">please enter the Email</div>
+          <div *ngIf="emailId?.errors?.['pattern']" id="error-msg">
+            Please enter the correct email id
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" formControlName="password" placeholder="Password*">
+        <div *ngIf="password?.invalid && password?.dirty || password?.touched" id="error-msg">
+          <div *ngIf="password?.errors?.['required']">please enter the password</div>
+          <div *ngIf="password?.errors?.['pattern']" id="error-msg">
+            Password should have min 8 letter password, with at least a symbol, upper and lower case letters
+            and a number
+            symbol.
+          </div>
+
+        </div>
+
+      </div>
+
+      <button type="submit" class="btnArea" [disabled]="loginForm.invalid">Login</button>
+    </form>
+
+    <div class="LinkArea"><span>New User? &nbsp;</span> <a routerLink="/register">Register Here</a></div>
+  </div>
+</div>

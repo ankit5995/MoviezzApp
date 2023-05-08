@@ -1,0 +1,55 @@
+<video autoplay muted loop id="myVideo" style="object-fit: fill;">
+  <source src="../../assets/images/pexels-cottonbro-studio-6552600-4096x2160-25fps.mp4" type="video/mp4">
+</video>
+
+
+<div style="position: fixed;width: 100%;">
+  <mat-toolbar style=" background-image: linear-gradient(15deg,#1BFFFF  , #2E3192  100%);">
+    <img src="../../assets/95d3fd30194144abaa5253cfa90d8c77-fotor-bg-remover-2023042623633.png" routerLink="" id="movie-icon">
+    <span style="margin-left: 75vw;"></span>
+    <a id="signUpBtn" routerLink="/login">
+      <h2>Login</h2>
+    </a>
+  </mat-toolbar>
+</div>
+
+<div class="wrapper">
+  <div class="registerArea">
+    <form [formGroup]="registerationForm" (ngSubmit)="register()">
+      <div class="mb-3">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" name="userName" formControlName="userName"
+          placeholder="Enter Your Name*">
+        <mat-hint *ngIf="userName.invalid">Username only contains alphabets</mat-hint>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" formControlName="password"
+          placeholder="Enter Your Password*">
+        <mat-hint *ngIf="password.invalid"> length 8, @#&*, Aa-Az case letters, 0-9
+
+        </mat-hint>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="text" class="form-control" name="emailId" formControlName="emailId" placeholder="E-mail*">
+        <mat-hint *ngIf="emailId.invalid"> Email should be in proper format</mat-hint>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contact No</label>
+        <input type="text" class="form-control" name="phoneNumber" formControlName="phoneNumber"
+          placeholder="Enter Your Phone Number*">
+        <mat-hint *ngIf="phoneNumber.invalid">Enter a valid 10-Digit Mobile No</mat-hint>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <label class="form-label">Profile Picture </label>
+          <input type="file" class="form-control" id="fileUpload" formContronName="profileUrl" multiple="multiple"
+            accept="image/*" (change)="onChange($event,$event)" (change)="changeImage($event)" />
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary" [disabled]="registerationForm.invalid">Sign Up</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,195 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+
+<div class="container-fluid" style="background-image: linear-gradient(15deg,#09203F    , #537895  100%);">
+  <div class="row" id="bg-image">
+    <div class="col-md-12 navbar" id="icon" style="height: 60px;">
+      <a (click)="getMovies()" class="logo navbar-brand    offset-md-2 bg-transparent"
+        style="margin-left: 20px;margin-top: -30px;">
+        <img src="../../assets/95d3fd30194144abaa5253cfa90d8c77-fotor-bg-remover-2023042623633.png" alt=""
+          style="height: 120px; width: 120px; ">
+      </a>
+      <ul class="nav" style="margin-top: -27px;margin-right: 50px;">
+
+        <li class="nav-item active"><a class="nav-link" (click)="getMovies()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="!flag" routerLink="/register">SignUp</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="!flag" routerLink="/login">Login</a></li>
+        <!-- <li class="nav-item"><a href="#" class="nav-link" style="color: white;" routerLink="/home"  >LogOut</a></li> -->
+        <li class="nav-item"><a class="nav-link">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/subs"><mat-icon>subscriptions</mat-icon></a></li>
+        <li class="nav-item">
+          <div class="searchBox">
+            <input type="text" class="searchText" placeholder="Type to search..." (ngModelChange)="SearchMovie($event)"
+              [ngModel]="searchText">
+            <a  class="searchBtn"><mat-icon>search</mat-icon></a>
+
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" *ngIf="flag" (click)="viewWatchList()"><mat-icon>playlist_play</mat-icon></a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf="flag" (click)="viewfavList()"><mat-icon>favorite</mat-icon></a>
+        </li>
+
+
+
+
+        <li class="nav-item" *ngIf="flag">
+          <a class="nav-link" style="color: white;" (click)="toggleMenu()">
+
+            <img class="profileImg" src="{{userdetails.profileUrl}}" alt="">
+            <div class="sub-menu-wrap" id="subMenu">
+              <div class="sub-menu" *ngIf="menuOpen">
+                <div class="user-info">
+                  <img id="innerImg" src="{{userdetails.profileUrl}}" alt="">
+                  <h3>{{userdetails.userName}}</h3>
+                  <p>{{userdetails.emailId}}</p>
+                </div>
+                <hr>
+                <a class="sub-menu-link">
+                  <mat-icon>logout</mat-icon>
+                  <p (click)="logOut()">Log out</p>
+                  <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                  <mat-icon>help</mat-icon>
+                  <p>Help & support</p>
+                  <span>></span>
+
+                </a>
+              </div>
+            </div>
+
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+
+
+    <div class="accordion" style="width: 1500px;height: 500px; margin-top: 70px;">
+      <ul>
+        <li>
+          <div class="image_title">
+            <a href="#">spiderman: home Coming</a>
+          </div>
+          <a ><img src="../../assets/wallpaperflare.com_wallpaper (1).jpg"
+              alt="transformers4_640x320" border="0" style="height: 500px;width: 950px;"></a>
+        </li>
+        <li>
+          <div class="image_title">
+            <a href="#">Blade Runner 2049</a>
+          </div>
+          <a ><img src="../../assets/wallpaperflare.com_wallpaper (2).jpg"
+              alt="Blade_Runner2049_640x320" border="0" style="height: 500px;width: 950px;"></a>
+        </li>
+        <li>
+          <div class="image_title">
+            <a href="#">Avengers</a>
+          </div>
+          <a ><img src="../../assets/wallpaperflare.com_wallpaper (3).jpg"
+              alt="GOG2_640x320" border="0" style="height: 500px;width: 950px;"></a>
+        </li>
+        <li>
+          <div class="image_title">
+            <a href="#">Dune : Frank Herbert</a>
+          </div>
+          <a ><img src="../../assets/wallpaperflare.com_wallpaper (4).jpg"
+              alt="spiderman_homecoming_640x320" border="0" style="height: 500px; width: 920px;"></a>
+        </li>
+        <li>
+          <div class="image_title">
+            <a href="#">Joker</a>
+          </div>
+          <a ><img src="../../assets/wallpaperflare.com_wallpaper (5).jpg"
+              alt="Wonder_Woman_640x320" border="0" style="height: 500px;"></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-left: 90%; margin-top: 300px;">
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="genre">Genre</button>
+      <mat-menu #genre="matMenu">
+        <div *ngFor="let item of genres">
+          <button class="genreButton" (click)="getGenre(item.id)">{{item.name}}</button>
+        </div>
+      </mat-menu>
+      <button mat-menu-item (click)="SortByRating()">Top Rated Movies</button>
+      <button mat-menu-item [matMenuTriggerFor]="lang">Original Language</button>
+      <mat-menu #lang="matMenu">
+        <button class="langButton" (click)="getLangEn()">English</button>
+        <button class="langButton" (click)="getLangKo()">Korean</button>
+      </mat-menu>
+    </mat-menu>
+
+  </div>
+
+
+
+  <button mat-button *ngIf="!(favIn || watchIn)"  [matMenuTriggerFor]="menu" class="sortBy"><mat-icon>sort</mat-icon>Sort By</button>
+
+
+  <div class="card__collection clear-fix">
+    <div class="cards cards--two" *ngFor="let movie of movieList">
+      <img src={{IMG_URL+movie.poster_path}} class="img-responsive" alt="Cards Image">
+      <span class="cards--two__rect"></span>
+      <span class="cards--two__tri"></span>
+      <p>{{movie.title}}</p>
+      <ul class="cards__list">
+        <li><i (click)="watchLater(movie.id)" *ngIf="!viewList"><mat-icon>watch_later</mat-icon></i></li>
+        <li><i (click)="addTofavorite(movie.id)" *ngIf="!viewList"><mat-icon>favorite</mat-icon></i></li>
+        <li><i (click)="navigateTo(movie.id)"><mat-icon>play_arrow</mat-icon></i></li>
+        <li><i *ngIf="viewList" (click)="deleteMovieFromList(movie.id)"><mat-icon>delete</mat-icon></i></li>
+      </ul>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="footerDiv">
+    <footer class="footer">
+      <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+      </div>
+      <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <mat-icon name="logo-facebook"></mat-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <mat-icon name="logo-twitter"></mat-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <mat-icon name="logo-linkedin"></mat-icon>
+          </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <mat-icon name="logo-instagram"></mat-icon>
+          </a></li>
+      </ul>
+      <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+
+      </ul>
+      <p>&copy;2023 Moviezz | All Rights Reserved</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </div>

@@ -1,0 +1,115 @@
+#bg-image {
+  height: 250px;
+  background: none;
+}
+
+mat-card {
+  background: black;
+  height: auto;
+  margin-top: 35px;
+  margin-left: 50px;
+  color: #ccc;
+  border: 5px solid rgb(75, 75, 73);
+  border-radius: 5px;
+
+
+}
+
+#card-img {
+  height: 260px;
+  width: 260px;
+  padding: 5px;
+}
+
+mat-icon {
+  margin-left: 120px;
+  cursor: pointer;
+
+}
+
+mat-card:hover {
+  transform: scale(1.2);
+
+}
+
+.card-div {
+  display: flex;
+
+  flex-wrap: wrap;
+  margin-top: 100px;
+  margin-left: 50px;
+
+
+}
+
+.main-card {
+  height: 400px;
+  width: 350px;
+  border: 2px solid white;
+  padding: 3.5vh;
+}
+
+#maincard-img {
+  height: 300px;
+  width: 300px;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+  position: relative;
+  top: 10vh;
+  left: 18vh;
+}
+
+a {
+  background-color: #E50914;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 2vh;
+}
+
+a:hover {
+  background-color: black;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.overview {
+  color: white;
+  font-weight: bold;
+  margin-top: 10vh;
+  padding: 2vh;
+}
+
+.outerDiv {
+  display: flex;
+
+}
+
+p {
+  font-size: 8vh;
+  margin-bottom: 10vh;
+}
+
+.castPicture {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 40px;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  -o-border-radius: 40px;
+}
+
+.castDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vh;
+}
+
+.content {
+  text-align: center;
+  padding: 1vh;
+
+}
