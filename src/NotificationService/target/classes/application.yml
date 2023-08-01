@@ -1,0 +1,18 @@
+server:
+  port: 8090
+spring:
+  data:
+    mongodb:
+     uri: mongodb://localhost:27017/UserMovieDb
+  application:
+    name: user-notification-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka # use http://localhost:8761/eureka when running on local system
+    fetchRegistry: true
+    registerWithEureka: true
+#  instance:
+#    hostname: localhost
+#  instance:
+#    preferIpAddress : true
